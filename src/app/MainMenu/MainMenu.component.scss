@@ -1,0 +1,53 @@
+.carousel-control-prev {
+  position: fixed;
+}
+
+.carousel-control-next {
+  position: fixed;
+}
+
+.carousel {
+  margin: 0px 50px 0px 50px;
+}
+
+.carousel-indicators {
+  bottom: 5vh;
+  position: fixed;
+}
+
+#module-item {
+  color: #000000;
+  background-color: #e8e5e5;
+  margin: 10px;
+  font-size: 10px;
+  padding: 10px 15px 10px;
+}
+
+.module {
+  border-radius: 7%;
+  border: 1px black;
+}
+
+.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
+  margin: 0 auto;
+}
+
+.item {
+  text-align: center;
+}
+
+.img-circle {
+  border-radius: 50%;
+  width: 60% ;
+  height: 60%;
+}
+
+.item-heading {
+  margin: 8px 0 5px;
+  font-size: 15px;
+}
+
+.item-description {
+  font-size:12px;
+  margin:5px 0px 0px;
+}

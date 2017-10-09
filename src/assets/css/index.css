@@ -1,0 +1,43 @@
+body {
+  background:linear-gradient(155deg, #172a74, #21a9af);
+  height:600px;
+  overflow:hidden;
+  -ms-overflow-style: scrollbar;
+  -webkit-app-region:drag;
+  padding: 0px;
+  margin: 0px;
+}
+
+button,textarea, a, li, span {
+	-webkit-app-region: no-drag;
+}
+
+h1, h2, h3, h4, h5, h6, span, a, div {
+  -webkit-user-select: none;
+}
+
+#title-bar {
+    -webkit-app-region: drag;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    vertical-align: middle;
+    background-color: #03a9f4;
+    padding: none;
+    margin: 0px;
+}
+
+#title {
+    position: fixed;
+    top: 0px;
+    left: 6px;
+    color:white;
+
+}
+
+#title-bar-btns {
+    -webkit-app-region: no-drag;
+    position: fixed;
+    top: 0px;
+    right: 6px;
+}
