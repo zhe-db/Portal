@@ -15,12 +15,15 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
   <link href="https://fonts.googleapis.com/css?family=Armata" rel="stylesheet">
+  <script> if (typeof module === 'object') {window.module = module; module = undefined;} </script>
 </head>
 <body>
   <app-header></app-header>
   <div class = "container">
     <app-root>Loading...</app-root>
   </div>
-  <script src="assets/js/index.js"></script>
+  <script src="assets/js/index.js">
+    if (window.module) module = window.module;
+  </script>
 </body>
 </html>

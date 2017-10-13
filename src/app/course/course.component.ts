@@ -1,5 +1,8 @@
-import {Component} from '@angular/core';
-import {CourseService} from './course.services'
+import {Component, OnInit} from '@angular/core';
+import {CourseService} from './course.services';
+import {Location} from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import {UWAPIServices} from '../uwaterloo-api.services';
 
 @Component({
   selector: 'coursePortal',
@@ -8,6 +11,13 @@ import {CourseService} from './course.services'
   providers: [CourseService]
 })
 
-export class CourseComponent {
+export class CourseComponent implements OnInit {
+  info: string;
+  constructor(private location: Location, private courseSerice: CourseService) {}
 
+  ngOnInit(): void {
+    this.courseSerice.searchCourse().then(res => console.log(res.data));
+  }
+  goBack(): void {
+  }
 }

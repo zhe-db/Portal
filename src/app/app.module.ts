@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import {UWAPIServices} from './uwaterloo-api.services';
+
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './MainMenu/MainMenu.component';
 import { HeaderComponent } from './Header/Header.component';
@@ -16,6 +18,7 @@ import { UserComponent } from './user/user.component';
 import { BuildingComponent } from './building/building.component';
 import { PeopleComponent } from './people/people.component';
 import { BotComponent } from './bot/bot.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,7 @@ import { BotComponent } from './bot/bot.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UWAPIServices],
   bootstrap: [AppComponent, HeaderComponent]
 })
 export class AppModule { }

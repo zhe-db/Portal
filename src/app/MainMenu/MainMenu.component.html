@@ -4,7 +4,7 @@
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
   </ol>
   <div class="carousel-inner">
-    <div class="carousel-item active">
+    <div class="carousel-item active" id="page-one">
       <div class="container">
         <div *ngFor="let PortalList of PortalLists" class="row">
           <div *ngFor="let portal of PortalList.data" class="col item module hvr-grow" id= "module-item" routerLink="{{portal.state}}">
@@ -15,40 +15,13 @@
         </div>
      </div>
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" id ="page-two">
       <div class="container">
-        <div class="row">
-          <div class="col item module hvr-grow" id= "module-item">
+        <div *ngFor="let PortalList of PortalLists" class="row">
+          <div *ngFor="let portal of PortalList.data" class="col item module hvr-grow" id= "module-item" routerLink="{{portal.state}}">
             <img src="assets/img/search.png"  class="img-circle img-responsive" />
-                <h3 class="item-heading">Courses</h3>
-                <p class="item-description">Search for a course!</p>
-          </div>
-          <div class="col item module hvr-grow" id= "module-item">
-            <img src="assets/img/search.png"  class="img-circle img-responsive" />
-                <h3 class="item-heading">Courses</h3>
-                <p class="item-description">Search for a course!</p>
-          </div>
-          <div class="col item module hvr-grow" id= "module-item">
-            <img src="assets/img/search.png"  class="img-circle img-responsive" />
-                <h3 class="item-heading">Courses</h3>
-                <p class="item-description">Search for a course!</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col item module hvr-grow" id= "module-item">
-            <img src="assets/img/search.png"  class="img-circle img-responsive" />
-                <h3 class="item-heading">Courses</h3>
-                <p class="item-description">Search for a course!</p>
-          </div>
-          <div class="col item module hvr-grow" id= "module-item">
-            <img src="assets/img/search.png"  class="img-circle img-responsive" />
-                <h3 class="item-heading">Courses</h3>
-                <p class="item-description">Search for a course!</p>
-          </div>
-          <div class="col item module hvr-grow" id= "module-item">
-            <img src="assets/img/search.png"  class="img-circle img-responsive" />
-                <h3 class="item-heading">Courses</h3>
-                <p class="item-description">Search for a course!</p>
+                <h3 class="item-heading">{{ portal.header }}</h3>
+                <p class="item-description">{{ portal.description }}</p>
           </div>
         </div>
      </div>
