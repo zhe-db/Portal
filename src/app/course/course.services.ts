@@ -1,8 +1,10 @@
 import {Injectable, OnInit} from '@angular/core';
 
+import {PartialCourse} from './partialCourse';
+import {Course} from './course';
 import {UWAPIServices} from '../uwaterloo-api.services';
 var uwaterlooApi = require('uwaterloo-api');
-import {Course} from './course';
+
 
 @Injectable()
 export class CourseService {
@@ -13,10 +15,15 @@ export class CourseService {
    this.uwapi.generateCredentials().then(res => this.uwclient = res);
   }
 
-  searchCourse(): Promise<any> {
+  searchCourse(course: PartialCourse): Promise<any> {
+    let url = "/courses/" + course.subject + "/" + course.catalog_number;
     return new Promise((resolve, reject) => {
-      this.uwclient.get("/courses/CS/246", function (err, res) {
-        resolve(res);
+      this.uwclient.get(url, function (err, res) {
+        if (err) alert(err);
+        else {
+          let resultCourse: Course = res.data;
+          resolve(resultCourse);
+         }
       })
     });
   }

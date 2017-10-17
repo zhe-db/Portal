@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import {UWAPIServices} from './uwaterloo-api.services';
+import { CourseModule } from './course/course.module';
+
+import { UWAPIServices } from './uwaterloo-api.services';
 
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './MainMenu/MainMenu.component';
 import { HeaderComponent } from './Header/Header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CourseComponent } from './course/course.component';
 import { EnrollmentComponent } from './enrollment/enrollment.component';
 import { ClassroomComponent } from './classroom/classroom.component';
 import { TermComponent } from './term/term.component';
@@ -25,7 +26,6 @@ import { BotComponent } from './bot/bot.component';
     AppComponent,
     MainMenuComponent,
     HeaderComponent,
-    CourseComponent,
     EnrollmentComponent,
     ClassroomComponent,
     TermComponent,
@@ -39,7 +39,8 @@ import { BotComponent } from './bot/bot.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CourseModule
   ],
   providers: [UWAPIServices],
   bootstrap: [AppComponent, HeaderComponent]

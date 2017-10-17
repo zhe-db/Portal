@@ -3,8 +3,10 @@ export class Course {
   subject: string;
   catalog_number: string;
   title: string;
+  description: string;
   units: number;
   academic_level: string;
+  prerequisities: string;
   antirequisites: string;
-  description: string;
+  url: string;
 }

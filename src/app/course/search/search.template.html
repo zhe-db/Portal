@@ -1,0 +1,10 @@
+<div class="row">
+  <h1 id="course-title">{{TextConstant.TITLE}}</h1>
+</div>
+<div class="group row">
+  <input class ="course-code" type="text" required [(ngModel)]="input">
+  <span class="highlight"></span>
+  <span class="bar"></span>
+  <label>{{TextConstant.INPUT_TEXT}}</label>
+  <button  class="btn btn-success course-submit" id = "course-submit" type="button" (click)="Submit()">{{TextConstant.SUBMIT_BUTTON}}</button>
+</div>

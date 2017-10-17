@@ -1,2 +1,23 @@
-<button class="btn btn-primary" type="submit" [routerLink]="['/mainMenu']" fragment="#page-two">Back</button>
-<h1>{{ this.info }}</h1>
+<div class="row">
+  <button class="btn btn-primary" type="submit" [routerLink]="['/mainMenu']" fragment="#page-two" id="back">Back</button>
+</div>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+  <ol *ngIf="SearchCourse.subject" class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active" id="page-one">
+      <Search id="course-search" [SearchCourse]="SearchCourse" (SearchCourseChange) = "SearchCourseChange($event)"
+        (ResultChange) = "ResultChange($event)">
+      </Search>
+    </div>
+    <div class="carousel-item" id ="page-two">
+      <Result id="course-result" [ResultCourse]="ResultCourse"></Result>
+    </div>
+  </div>
+  <a *ngIf="SearchCourse.subject" class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" (SearchCourse) = "SearchCourse($event)">
+    <span class="carousel-control-next-icon bounce" aria-hidden="true" (click)="RemoveClass($event)"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
