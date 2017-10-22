@@ -1,8 +1,20 @@
 <div *ngIf="MainCourse">
   <div class ="row">
-    <h2 id ="course-title">{{MainCourse.subject + " " + MainCourse.catalog_number +": " + MainCourse.title}}</h2>
+    <h3 id ="course-title">{{MainCourse.subject + " " + MainCourse.catalog_number +": " + MainCourse.title}}</h3>
   </div>
   <div class ="row">
-    <p id ="course-description">{{MainCourse.description}}</p>
+    <nav class="nav nav-pills nav-fill" id="course-navbar">
+      <span class="badge badge-primary">{{TextConstant.DESCRIPTION_BADGE}}</span>
+      <span class="badge badge-success">{{TextConstant.REQUIRE_BADGE}}</span>
+      <span class="badge badge-danger">{{TextConstant.ANTI_REQUIRE_BADGE}}</span>
+    </nav>
+  </div>
+  <div class ="row" id="content" data-spy="scroll" data-target="#course-navbar" data-offset="0">
+      <h4 id="course-description">Description</h4>
+      <p id="course-description">{{MainCourse.description? MainCourse.description: "None"}}</p>
+      <h4 id="course-prerequisites">Prerequisites</h4>
+      <p id="course-prerequisites">{{MainCourse.prerequisites? MainCourse.prerequisites: "None"}}</p>
+      <h4 id="course-antirequisites">Antirequisites</h4>
+      <p id="course-antirequisites">{{MainCourse.antirequisites? MainCourse.antirequisites: "None"}}</p>
   </div>
 </div>

@@ -4,7 +4,7 @@ import {PartialCourse} from './partialCourse';
 import {Course} from './course';
 import {UWAPIServices} from '../uwaterloo-api.services';
 var uwaterlooApi = require('uwaterloo-api');
-
+declare var electron: any;
 
 @Injectable()
 export class CourseService {
@@ -19,7 +19,7 @@ export class CourseService {
     let url = "/courses/" + course.subject + "/" + course.catalog_number;
     return new Promise((resolve, reject) => {
       this.uwclient.get(url, function (err, res) {
-        if (err) alert(err);
+        if (err) alert("There may be some network issue. Please try again later.");
         else {
           let resultCourse: Course = res.data;
           resolve(resultCourse);
@@ -27,4 +27,6 @@ export class CourseService {
       })
     });
   }
+
+
 }

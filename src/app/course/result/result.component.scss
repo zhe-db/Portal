@@ -2,11 +2,38 @@
   margin: 0 auto;
   color: white;
 }
-
-#course-description {
-  margin: 60px auto;
-  font-size: 16px;
+.nav {
+  margin: 8px auto;
+}
+#content {
+  min-width: 640px;
+  max-width: 640px;
+  margin: 5px auto !important;
+  padding-left: 20px;
+  padding-right: 10px;
+  min-height: 100px;
+  max-height: 210px;
+  position: relative;
+  margin: 2em auto;
   color: white;
-  width: 500px;
-  margin-left: 45px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: inline-block;
+}
+
+div::-webkit-scrollbar {
+  width: .4em;
+}
+div::-webkit-scrollbar,
+div::-webkit-scrollbar-thumb {
+  overflow:visible;
+  border-radius: 4px;
+}
+div::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.2);
+}
+
+.nav .badge {
+  margin-left: 5px;
+  padding: 6px;
 }

@@ -44,16 +44,22 @@ export class SearchComponent implements OnInit {
   }
   searchCourse() {
     this.courseSerice.searchCourse(this.SearchCourse).then(res => {
-      this.DisplayCourse = res
-      this.displayCourse();
+      if (res.subject) {
+        this.DisplayCourse = res
+        this.displayCourse();
+      } else {
+        alert(`${this.SearchCourse.subject} ${this.SearchCourse.catalog_number} does not exist. Please verify course code.`)
+      }
     });
   }
 
   displayCourse() {
-      console.log(this.DisplayCourse);
-      this.SearchCourseChange.emit(this.SearchCourse);
-      console.log(this.SearchCourse);
-      this.ResultChange.emit(this.DisplayCourse);
+      if(this.DisplayCourse.description) {
+        console.log(this.DisplayCourse);
+        this.SearchCourseChange.emit(this.SearchCourse);
+        console.log(this.SearchCourse);
+        this.ResultChange.emit(this.DisplayCourse);
+      }
   }
 
 

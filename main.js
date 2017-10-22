@@ -1,21 +1,35 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
+const {ipcMain} = require('electron')
+const {Tray} = require('electron')
+
+const WindowsToaster = require('node-notifier').WindowsToaster;
+
+var notifier = new WindowsToaster({
+  withFallback: false, // Fallback to Growl or Balloons?
+  customPath: void 0 // Relative/Absolute path if you want to use your fork of SnoreToast.exe
+});
+
+
+notifier.on('click', function (notifierObject, options) {
+  // Triggers if `wait: true` and user clicks notification
+});
+
+notifier.on('timeout', function (notifierObject, options) {
+  // Triggers if `wait: true` and notification closes
+});
 
 require('electron-reload')(__dirname, {
   electron: path.join(__dirname, 'node_modules', '.bin', 'elctron'),
   hardResetMethod: 'exit'
 });
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
 let win
 
 function createWindow () {
-  // Create the browser window.
   win = new BrowserWindow({width: 800, height: 600, resizable: false, frame: true})
   win.setMenu(null);
-  // and load the index.html of the app.
 
   win.loadURL(url.format({
     pathname: path.join(__dirname, '/dist/index.html'),
@@ -26,33 +40,42 @@ function createWindow () {
   // Open the DevTools.
   win.webContents.openDevTools()
 
-  // Emitted when the window is closed.
+
   win.on('closed', () => {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     win = null
   })
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
+
 app.on('ready', createWindow)
 
-// Quit when all windows are closed.
+
 app.on('window-all-closed', () => {
-  // On macOS it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
+
   if (process.platform !== 'darwin') {
     app.quit()
   }
 })
 
 app.on('activate', () => {
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
   if (win === null) {
     createWindow()
   }
+})
+
+ipcMain.on('CourseResultNotification', (event, ResultCourse) => {
+  console.log('ipc process received!')
+  let NotificationMessageTitle = `${ResultCourse.subject} ${ResultCourse.catalog_number}: ${ResultCourse.title}`;
+  let NotificationMessageBody = ResultCourse.description;
+  notifier.notify({
+    title: NotificationMessageTitle,
+    message: NotificationMessageBody,
+    icon: path.join(__dirname, '\\src\\assets\\img\\uw-notification.jpg'), // Absolute path (doesn't work on balloons)
+    sound: false, // Only Notification Center or Windows Toasters
+    wait: true, // Wait with callback, until user action is taken against notification
+    reply: false // Boolean. If notification should take input. Value passed as third argument in callback and event emitter.
+  }, function(error, response) {
+    console.log(response);
+  });
+
 })

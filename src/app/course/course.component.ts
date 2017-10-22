@@ -5,6 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {UWAPIServices} from '../uwaterloo-api.services';
 import {Course} from './course';
 import {PartialCourse} from './partialCourse';
+declare var electron: any;
 
 @Component({
   selector: 'coursePortal',
@@ -27,7 +28,6 @@ export class CourseComponent implements OnInit {
   }
 
   searchCourse() {
-
   }
 
   SearchCourseChange(SearchCourse: PartialCourse) {
@@ -36,11 +36,17 @@ export class CourseComponent implements OnInit {
   }
 
   ResultChange(ResultCourse: Course) {
-    this.ResultCourse = ResultCourse;
-    console.log(this.ResultCourse);
+    if(ResultCourse.subject) {
+      this.ResultCourse = ResultCourse;
+      console.log(this.ResultCourse);
+      let NotificationMessage = `${ResultCourse.subject} ${ResultCourse.catalog_number}: ${ResultCourse.title}`;
+      electron.ipcRenderer.send('CourseResultNotification', ResultCourse ,(event) => {})
+    } else {
+      alert(`${this.SearchCourse.subject} ${this.SearchCourse.catalog_number} does not exist. Please verify course code.`)
+    }
   }
 
   RemoveClass(event) {
-    event.target.classList.remove('bounce'); // To Remove
+    event.target.classList.remove('bounce');
   }
 }

@@ -41,3 +41,16 @@ h1, h2, h3, h4, h5, h6, span, a, div {
     top: 0px;
     right: 6px;
 }
+
+
+body::-webkit-scrollbar {
+  width: .4em;
+}
+body::-webkit-scrollbar,
+body::-webkit-scrollbar-thumb {
+  overflow:visible;
+  border-radius: 4px;
+}
+body:-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.2);
+}
