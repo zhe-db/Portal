@@ -36,7 +36,7 @@ export class SearchComponent implements OnInit {
   Submit(): void {
     let query = this.input.replace(/[ \W]/g,'');
     let subject = query.match(/\D+/g)[0].toUpperCase();
-    let catalog_number = query.match(/\d+/g)[0];
+    let catalog_number = query.match(/\d+.*/g)[0];
     this.SearchCourse.subject = subject;
     this.SearchCourse.catalog_number = catalog_number;
     console.log(this.SearchCourse);

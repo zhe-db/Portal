@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { CourseModule } from './course/course.module';
+import { EnrollmentModule } from './enrollment/enrollment.module';
 
 import { UWAPIServices } from './uwaterloo-api.services';
 
@@ -26,7 +27,6 @@ import { BotComponent } from './bot/bot.component';
     AppComponent,
     MainMenuComponent,
     HeaderComponent,
-    EnrollmentComponent,
     ClassroomComponent,
     TermComponent,
     FinalsComponent,
@@ -40,7 +40,8 @@ import { BotComponent } from './bot/bot.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    CourseModule
+    CourseModule,
+    EnrollmentModule
   ],
   providers: [UWAPIServices],
   bootstrap: [AppComponent, HeaderComponent]

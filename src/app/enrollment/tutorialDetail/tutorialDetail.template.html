@@ -1,0 +1,10 @@
+<div *ngIf="Tutorial">
+  <h2>{{Tutorial.name}} details!</h2>
+  <div>
+    <label>id: </label>{{Tutorial.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="Tutorial.name" placeholder="name" />
+  </div>
+  <button (click)="goBack()">{{TextConstant.BACK_BUTTON}}</button>
+</div>
