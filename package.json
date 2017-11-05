@@ -24,6 +24,7 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "cheerio": "^1.0.0-rc.2",
     "core-js": "^2.4.1",
     "electron": "^1.7.8",
     "electron-reload": "^1.2.2",
@@ -32,7 +33,9 @@
     "jquery-mobile": "^1.5.0-alpha.1",
     "node-notifier": "^5.1.2",
     "popper.js": "^1.12.5",
+    "request": "^2.83.0",
     "rxjs": "^5.4.2",
+    "underscore": "^1.8.3",
     "uwaterloo-api": "^1.0.2",
     "zone.js": "^0.8.14"
   },

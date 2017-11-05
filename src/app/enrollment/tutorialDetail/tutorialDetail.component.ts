@@ -22,7 +22,7 @@ export class TutorialDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.TextConstant = LanguageConstant.EN;
+    this.TextConstant = LanguageConstant.CN;
     this.route.paramMap
       .switchMap((params: ParamMap) => {
         return this.enrollmentService.getTutorial(+params.get('id'))
@@ -31,6 +31,7 @@ export class TutorialDetailComponent implements OnInit {
   }
 
   goBack(): void {
+    console.log(this.Tutorial);
     this.location.back();
   }
 }

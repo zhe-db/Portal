@@ -1,4 +1,6 @@
-
+result {
+  margin: 0 auto;
+}
 .group {
     position:relative;
     margin:80px auto;
@@ -18,12 +20,19 @@
   position: fixed;
 }
 
-
 #enrollment-title {
     margin: 10px auto;
     font-family: 'Armata', sans-serif;
     font-weight: bold;
     color:white;
+}
+#page-two {
+  text-align: center;
+}
+
+#resultRouter {
+  width: 0px;
+  height: 0px;
 }
 
 input {

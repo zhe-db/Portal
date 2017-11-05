@@ -11,28 +11,35 @@ import {LanguageConstant} from './language.constant';
 @Component({
   selector: 'Result',
   templateUrl: './result.template.html',
-  styleUrls: ['result.component.scss'],
-  providers: [EnrollmentService]
+  styleUrls: ['result.component.scss']
 })
 
 export class ResultComponent implements OnInit {
   TextConstant;
-  @Input('lectureData') lectures: LectureData[];
-  @Input('tutorialData') tutorials: TutData[];
-  constructor(private location: Location, private enrollmentServiceSerice: EnrollmentService, private route: ActivatedRoute) {}
+  lectures: LectureData[] = null;
+  tutorials: TutData[] = null;
+  btnMessage: string;
+  resultSwitch: boolean;
+  constructor(private location: Location, private enrollmentService: EnrollmentService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    //this.TextConstant = LanguageConstant.EN;
+    this.lectures = this.enrollmentService.lectureCache;
+    this.tutorials = this.enrollmentService.tutorialCache;
+    this.resultSwitch = false;
+    this.btnMessage = "Tutorial";
     console.log(this.lectures);
-    console.log(this.tutorials);
   }
-
-  goBack(): void {
-
-  }
-
+  
   ngAfterViewInit(): void {
 
   }
 
+  switchContent() {
+    this.resultSwitch = !this.resultSwitch;
+    this.btnMessage = this.resultSwitch? "Lecture" : "Tutorial";
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 }

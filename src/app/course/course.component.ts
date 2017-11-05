@@ -1,20 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, HostBinding} from '@angular/core';
 import {CourseService} from './course.services';
 import {Location} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {UWAPIServices} from '../uwaterloo-api.services';
 import {Course} from './course';
 import {PartialCourse} from './partialCourse';
+import {slideInDownAnimation} from '../animation';
 declare var electron: any;
 
 @Component({
   selector: 'coursePortal',
   templateUrl: './course.template.html',
+  animations: [ slideInDownAnimation ],
   styleUrls: ['course.component.scss'],
   providers: [CourseService]
 })
 
 export class CourseComponent implements OnInit {
+  @HostBinding('@routeAnimation') routeAnimation = true;
+  @HostBinding('style.display')   display = 'block';
+  @HostBinding('style.position')  position = 'relative';
   SearchCourse: PartialCourse;
   ResultCourse: Course = null;
   constructor(private location: Location, private courseSerice: CourseService) {}

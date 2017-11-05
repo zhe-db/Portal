@@ -9,8 +9,8 @@ declare var electron: any;
 @Injectable()
 export class EnrollmentService {
   uwclient;
-  lectureCache: LectureData[] = null;
-  tutorialCache: TutData[] = null;
+  lectureCache: LectureData[];
+  tutorialCache: TutData[];
   uwapi: UWAPIServices;
   constructor() {
    this.uwapi = new UWAPIServices;
@@ -36,6 +36,7 @@ export class EnrollmentService {
           if (item.section.includes("TUT")) res.push(item);
       });
       this.tutorialCache = res;
+      console.log(this.tutorialCache);
       resolve(res);
     });
   }
@@ -53,17 +54,44 @@ export class EnrollmentService {
   }
 
   getTutorial(classNumber: number): Promise<TutData> {
+      console.log("gg");
+      console.log(this.tutorialCache);
       return new Promise((resolve, reject) => {
-        var res = this.tutorialCache.find(tut => tut.class_number === classNumber)[0];
+        var res = this.tutorialCache.find(tut => tut.class_number === classNumber);
         resolve(res);
       });
   }
 
   getLecture(classNumber: number): Promise<LectureData> {
     return new Promise((resolve, reject) => {
-      var res = this.lectureCache.find(tut => tut.class_number === classNumber)[0];
+      var res = this.lectureCache.find(tut => tut.class_number === classNumber);
       resolve(res);
     });
+  }
+
+  handleDate(date: string): string[] {
+    let res = [];
+    const dateList = date.match(/[A-Z][a-z]*/g);
+    dateList.forEach((x) =>{
+      switch(x) {
+        case 'M':
+          res.push('Monday');
+          break;
+        case 'T':
+          res.push('Tuesday');
+          break;
+        case 'W':
+          res.push('Wednesday');
+          break;
+        case 'Th':
+          res.push('Thursday');
+          break;
+        case 'F':
+          res.push('Friday');
+          break;
+      }
+    });
+    return res;
   }
 
 

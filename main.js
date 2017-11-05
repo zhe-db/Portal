@@ -88,3 +88,17 @@ ipcMain.on('CourseResultNotification', (event, ResultCourse) => {
   });
 
 })
+
+ipcMain.on('OpenRateMyProfessor', (event, profName) => {
+  console.log('rateMyProf received!');
+  console.log(profName);
+  const firstName = profName.split(',')[0];
+  const lastName = profName.split(',')[1];
+  rateMyProf = new BrowserWindow({width: 800, height: 600, resizable: true, frame: true});
+  rateMyProf.setMenu(null);
+  rateMyProf.loadURL(`http://www.ratemyprofessors.com/search.jsp?query=${lastName}+${firstName}`)
+
+  rateMyProf.on('closed', () => {
+    win = null
+  });
+});

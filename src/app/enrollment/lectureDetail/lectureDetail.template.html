@@ -1,10 +1,62 @@
-<div *ngIf="Lecture">
-  <h2>{{Lecture.name}} details!</h2>
-  <div>
-    <label>id: </label>{{Lecture.id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="Lecture.name" placeholder="name" />
-  </div>
-  <button (click)="goBack()">{{TextConstant.BACK_BUTTON}}</button>
+<div *ngIf="Lecture" id="content-area">
+    <div class="row" id="top-area">
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="availableSeats">
+        <strong>Success:</strong> {{TextConstant.AVAILABLE_SEATS}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="!availableSeats">
+        <strong>Alert:</strong> {{TextConstant.FULL_CLASS_WARNING}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <hr>
+      <h3 id="result-title">{{Lecture.subject + " " + Lecture.catalog_number + " " + Lecture.section}}</h3>
+    </div>
+    <div class="row" id="number-area">
+      <button type="button" class="btn btn-primary number-area col">
+        {{TextConstant.ENROLLMENT_CAPACITY}}: <span class="badge badge-light numbers">{{Lecture.enrollment_capacity}}</span>
+      </button>
+      <button type="button" class="btn btn-primary number-area col">
+        {{TextConstant.ENROLLMENT_TOTAL}}: <span class="badge badge-light numbers">{{Lecture.enrollment_total}}</span>
+      </button>
+      <button type="button" class="btn btn-primary number-area col">
+        {{TextConstant.AVAILABLE_SEAT}}: <span class="badge badge-light numbers">{{seats}}</span>
+      </button>
+      <button type="button" class="btn btn-primary number-area col">
+        {{TextConstant.WAITING_TOTAL}}: <span class="badge badge-light numbers">{{Lecture.waiting_total}}</span>
+      </button>
+    </div>
+    <div class="row" id="prof-area">
+      <hr>
+      <h3 id="prof-title">{{TextConstant.PROFESSOR}}</h3>
+      <div class="card" style="width: 20rem;" id="prof-profile">
+        <img class="card-img-top prof-photo" src="assets/img/prof.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">{{Lecture.classes[0].instructors[0]}}</h4>
+          <p class="card-text"></p>
+          <button (click)="goRateMyProf();" class="btn btn-primary newWindow">RateMyProf</button>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h3 id="prof-title">{{TextConstant.LOCATION}}</h3>
+    <button type="button" class="btn btn-primary">
+       {{Lecture.classes[0].location.building}} <span class="badge badge-light">{{Lecture.classes[0].location.room}}</span>
+      <span class="sr-only">unread messages</span>
+    </button>
+    <iframe id="map"
+      width="600"
+      height="300"
+      frameborder="0" style="border:0"
+      [src]='googleMapUrl | safe' allowfullscreen>
+    </iframe>
+    <hr>
+    <h3 id="prof-title">{{TextConstant.TIME}}</h3>
+    <button type="button" class="btn btn-primary weekday" *ngFor="let day of weekDays">
+      {{day}} <span class="badge badge-light">{{Lecture.classes[0].date.start_time+"-"+Lecture.classes[0].date.end_time}}</span>
+    </button>
 </div>

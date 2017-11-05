@@ -1,0 +1,51 @@
+:host {
+  margin: 0 auto;
+}
+#result-title {
+  margin: 0 auto;
+  color: white;
+  margin-bottom: 30px;
+}
+
+#main-back-btn {
+  opacity: 0;
+}
+.form-check-label {
+  color: white;
+}
+
+#result-container {
+  width: 400px;
+  height: 250px;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+.result-component {
+  margin: 0 auto;
+}
+
+div::-webkit-scrollbar {
+  width: .4em;
+}
+div::-webkit-scrollbar,
+div::-webkit-scrollbar-thumb {
+  overflow:visible;
+  border-radius: 4px;
+}
+div::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.2);
+}
+
+.nav .badge {
+  margin-left: 5px;
+  padding: 6px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  :hover {
+    color: yellow;
+  }
+}

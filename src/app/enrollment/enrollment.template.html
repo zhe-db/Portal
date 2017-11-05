@@ -1,5 +1,5 @@
 <div class="row">
-  <button class="btn btn-primary" type="submit" [routerLink]="['/mainMenu']" fragment="#page-two" id="back">Back</button>
+  <button id="main-back-btn" class="btn btn-primary" type="submit" (click)="goBack()" fragment="#page-two" id="back">Back</button>
 </div>
 
 <!-- <div class="row">
@@ -35,7 +35,7 @@
       </div>
     </div>
     <div class="carousel-item" id ="page-two" *ngIf="lectureData">
-      <Result id="course-result" [lectureData]="lectureData" [tutorialData]="tutorialData"></Result>
+      <router-outlet name="resultRouter" id="resultRouter"></router-outlet>
     </div>
   </div>
   <a *ngIf="lectureData" class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" (SearchCourse) = "SearchCourse($event)">

@@ -8,8 +8,7 @@ import { EnrollmentComponent } from './enrollment/enrollment.component';
 const routes: Routes = [
   { path: '', redirectTo: '/mainMenu', pathMatch: 'full' },
   { path: 'mainMenu',  component: MainMenuComponent },
-  { path: 'course', component: CourseComponent },
-  { path: 'enrollment', component: EnrollmentComponent}
+  { path: 'course', component: CourseComponent }
 ];
 
 @NgModule({

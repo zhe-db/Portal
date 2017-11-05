@@ -1,0 +1,82 @@
+:host {
+  margin: 3px auto;
+}
+.numbers {
+  color: black;
+  background-color: white;
+}
+
+#result-title {
+  color: white;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+#top-area {
+  display: block;
+}
+
+.number-area {
+  margin-right: 3px;
+  font-size: 10px;
+}
+
+#prof-profile {
+  margin: 15px auto;
+}
+
+#prof-area {
+  display: block;
+}
+
+#prof-title {
+  margin: 10px auto;
+  color:white;
+  font-weight: bold;
+}
+
+#prof-banner {
+  margin-top: 5px;
+  height: auto;
+}
+
+.prof-photo {
+  width: 318px;
+  height: 318px;
+}
+
+.newWindow {
+  margin-bottom: 10px;
+}
+
+#content-area {
+  height: 330px;
+  overflow-y: scroll;
+  padding-right: 30px;
+  padding-left: 15px;
+  margin-top: 10px;
+}
+
+#main-area {
+  overflow-y: scroll;
+}
+
+#map {
+  margin-top: 10px;
+}
+
+.weekday {
+  margin-right: 5px;
+}
+
+div::-webkit-scrollbar {
+  width: .4em;
+}
+div::-webkit-scrollbar,
+div::-webkit-scrollbar-thumb {
+  overflow:visible;
+  border-radius: 4px;
+}
+div::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.2);
+}

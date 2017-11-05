@@ -1,8 +1,31 @@
-<h1>Result</h1>
-<div class="grid grid-pad">
-  <a *ngFor="let tutorial of tutorials" [routerLink]="['/tutorial', tutorial.class_number]" class="col-1-4">
-    <div class="module hero">
-      <h4>{{tutorial.class_number}}</h4>
+<div id="result-template">
+<div class="row">
+  <h2 id="result-title">{{lectures[0].subject + " " + lectures[0].catalog_number + " " + lectures[0].title}}</h2>
+</div>
+<button type="button" class="btn btn-info" (click)="switchContent();">{{btnMessage}}</button>
+<div class="row" *ngIf="resultSwitch">
+  <div class="container" id="result-container">
+  <a class="col-4" *ngFor="let tutorial of tutorials"
+    [routerLink]="[{ outlets: { resultRouter: ['tutorial', tutorial.subject, tutorial.catalog_number, tutorial.class_number]}}]">
+    <div>
+      <h4>
+        {{tutorial.section}}
+      </h4>
     </div>
   </a>
+</div>
+</div>
+
+<div class="row" *ngIf="!resultSwitch">
+  <div class="container" id="result-container">
+  <a class="col-4" *ngFor="let lecture of lectures"
+    [routerLink]="[{ outlets: { resultRouter: ['lecture', lecture.subject, lecture.catalog_number, lecture.class_number]}}]">
+    <div>
+      <h4>
+        {{lecture.section}}
+      </h4>
+    </div>
+  </a>
+</div>
+</div>
 </div>

@@ -1,27 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
 import { EnrollmentService } from './enrollment.services';
 import { LanguageConstant } from './language.constant';
 import { LectureData } from './lectureData';
 import { TutData } from './tutData';
 import { PartialCourse }   from '../course/partialCourse';
-
+import {slideInDownAnimation} from '../animation';
 @Component({
   selector: 'app-enrollment',
   templateUrl: './enrollment.template.html',
-  styleUrls: ['./enrollment.component.css'],
-  providers: [EnrollmentService]
+  animations: [ slideInDownAnimation ],
+  styleUrls: ['./enrollment.component.css']
 })
 export class EnrollmentComponent implements OnInit {
+  @HostBinding('@routeAnimation') routeAnimation = true;
+  @HostBinding('style.display')   display = 'block';
+  @HostBinding('style.position')  position = 'relative';
   TextConstant;
   lectureData: LectureData[] = null;
   tutorialData: TutData[] = null;
   searchInput: string;
   searchCourse: PartialCourse;
-  constructor(private enrollmentService: EnrollmentService) { }
+  resultSwitch: boolean;
+  constructor(private enrollmentService: EnrollmentService, private router: Router, private location: Location, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.TextConstant = LanguageConstant.EN;
+    this.TextConstant = LanguageConstant.CN;
     this.searchCourse = new PartialCourse;
+    this.resultSwitch = true;
   }
 
   submit(): void {
@@ -44,10 +51,15 @@ export class EnrollmentComponent implements OnInit {
         this.tutorialData = res;
         console.log(this.tutorialData);
       })
+      console.log(this.enrollmentService.tutorialCache);
     });
   }
-  
+
   RemoveClass(event) {
     event.target.classList.remove('bounce');
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
