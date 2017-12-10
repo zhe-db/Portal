@@ -1,0 +1,26 @@
+{
+  "nodes": [
+    {"id": "1", "group": 1, "name": "CS 245"},
+    {"id": "2", "group": 1, "name": "CS 350"},
+    {"id": "3", "group": 1, "name": "CS 241"},
+    {"id": "11", "group": 3, "name": "CS 240"},
+    {"id": "12", "group": 3, "name": "CS 350"},
+    {"id": "13", "group": 3, "name": "CS 484"},
+    {"id": "14", "group": 3, "name": "CS 488"},
+    {"id": "15", "group": 3, "name": "CS 345"},
+    {"id": "21", "group": 3, "name": "CS 135"},
+    {"id": "22", "group": 3, "name": "CS 136"},
+    {"id": "23", "group": 3, "name": "CS 146"}
+  ],
+  "links": [
+    {"source": "1", "target": "11", "value": 5},
+    {"source": "1", "target": "12", "value": 5},
+    {"source": "1", "target": "13", "value": 5},
+    {"source": "1", "target": "14", "value": 5},
+    {"source": "1", "target": "15", "value": 5},
+    {"source": "2", "target": "21", "value": 5},
+    {"source": "2", "target": "22", "value": 5},
+    {"source": "2", "target": "23", "value": 5},
+    {"source": "1", "target": "2", "value": 2}
+  ]
+}

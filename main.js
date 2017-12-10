@@ -7,6 +7,7 @@ const notifier = require('node-notifier');
 
 const WindowsToaster = require('node-notifier').WindowsToaster;
 
+require('./src/electron/IPC/IPC.js');
 // var notifier = new WindowsToaster({
 //   withFallback: false, // Fallback to Growl or Balloons?
 //   customPath: void 0 // Relative/Absolute path if you want to use your fork of SnoreToast.exe
@@ -22,10 +23,9 @@ notifier.on('timeout', function (notifierObject, options) {
   // Triggers if `wait: true` and notification closes
 });
 
-require('electron-reload')(__dirname, {
-  electron: path.join(__dirname, 'node_modules', '.bin', 'elctron'),
-  hardResetMethod: 'exit'
-});
+import {enableLiveReload} from 'electron-compile';
+
+enableLiveReload();
 
 let win
 
@@ -64,41 +64,3 @@ app.on('activate', () => {
     createWindow()
   }
 })
-
-ipcMain.on('CourseResultNotification', (event, ResultCourse) => {
-  notifier.notify({
-  'title': 'My notification',
-  'message': 'Hello, there!'
-});
-  console.log('ipc process received!')
-  let NotificationMessageTitle = `${ResultCourse.subject} ${ResultCourse.catalog_number}: ${ResultCourse.title}`;
-  let NotificationMessageBody = ResultCourse.description;
-  console.log(NotificationMessageTitle);
-  console.log(NotificationMessageBody);
-  notifier.notify({
-    title: NotificationMessageTitle,
-    message: NotificationMessageBody,
-    icon: path.join(__dirname, '\\src\\assets\\img\\uw-notification.jpg'), // Absolute path (doesn't work on balloons)
-    sound: true, // Only Notification Center or Windows Toasters
-    wait: true, // Wait with callback, until user action is taken against notification
-    reply: false // Boolean. If notification should take input. Value passed as third argument in callback and event emitter.
-  }, function(error, response) {
-      console.log(error)
-      console.log(response)
-  });
-
-})
-
-ipcMain.on('OpenRateMyProfessor', (event, profName) => {
-  console.log('rateMyProf received!');
-  console.log(profName);
-  const firstName = profName.split(',')[0];
-  const lastName = profName.split(',')[1];
-  rateMyProf = new BrowserWindow({width: 800, height: 600, resizable: true, frame: true});
-  rateMyProf.setMenu(null);
-  rateMyProf.loadURL(`http://www.ratemyprofessors.com/search.jsp?query=${lastName}+${firstName}`)
-
-  rateMyProf.on('closed', () => {
-    win = null
-  });
-});

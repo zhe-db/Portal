@@ -8,7 +8,7 @@ import { CourseModule } from './course/course.module';
 import { EnrollmentModule } from './enrollment/enrollment.module';
 import { EnrollmentRoutingModule } from './enrollment/enrollment-routing.module';
 import { UWAPIServices } from './uwaterloo-api.services';
-
+import { LanguageService} from './language.services';
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './MainMenu/MainMenu.component';
 import { HeaderComponent } from './Header/Header.component';
@@ -50,7 +50,7 @@ import {SearchFilterPipe} from './searchFilter';
     EnrollmentModule,
     BrowserAnimationsModule
   ],
-  providers: [UWAPIServices],
+  providers: [UWAPIServices, LanguageService],
   bootstrap: [AppComponent, HeaderComponent]
 })
 export class AppModule { }

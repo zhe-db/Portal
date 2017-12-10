@@ -26,7 +26,7 @@ export class LectureDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.TextConstant = LanguageConstant.CN;
+    this.TextConstant = LanguageConstant.EN;
     this.route.paramMap
       .switchMap((params: ParamMap) => {
         return this.enrollmentService.getLecture(+params.get('id'))

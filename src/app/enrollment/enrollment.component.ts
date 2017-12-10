@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Location} from '@angular/common';
 import { EnrollmentService } from './enrollment.services';
+import { LanguageService } from '../language.services';
 import { LanguageConstant } from './language.constant';
 import { LectureData } from './lectureData';
 import { TutData } from './tutData';
@@ -23,10 +24,14 @@ export class EnrollmentComponent implements OnInit {
   searchInput: string;
   searchCourse: PartialCourse;
   resultSwitch: boolean;
-  constructor(private enrollmentService: EnrollmentService, private router: Router, private location: Location, private route: ActivatedRoute) { }
+  constructor(private languageService: LanguageService, private enrollmentService: EnrollmentService, private router: Router, private location: Location, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.TextConstant = LanguageConstant.CN;
+    this.languageService.loadLanguage().then((res) => {
+      const lang = res;
+      console.log(lang);
+      this.TextConstant = LanguageConstant[lang];
+    });
     this.searchCourse = new PartialCourse;
     this.resultSwitch = true;
   }
@@ -39,6 +44,7 @@ export class EnrollmentComponent implements OnInit {
     this.searchCourse.catalog_number = catalog_number;
     console.log(this.searchCourse);
     this.SearchCourse();
+    this.languageService.SetLanguage('EN');
   }
 
   SearchCourse() {
