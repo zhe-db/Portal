@@ -8,6 +8,7 @@ const notifier = require('node-notifier');
 const WindowsToaster = require('node-notifier').WindowsToaster;
 
 require('./src/electron/IPC/IPC.js');
+import SystemTray from './src/electron/SystemTray/SystemTray.js';
 // var notifier = new WindowsToaster({
 //   withFallback: false, // Fallback to Growl or Balloons?
 //   customPath: void 0 // Relative/Absolute path if you want to use your fork of SnoreToast.exe
@@ -30,22 +31,28 @@ enableLiveReload();
 let win
 
 function createWindow () {
-  win = new BrowserWindow({width: 800, height: 600, resizable: false, frame: true})
+  win = new BrowserWindow({width: 800, height: 600, resizable: false, frame: true});
+  const systemTray = new SystemTray(app, win);
   win.setMenu(null);
 
   win.loadURL(url.format({
     pathname: path.join(__dirname, '/dist/index.html'),
     protocol: 'file:',
     slashes: true
-  }))
+  }));
 
   // Open the DevTools.
   win.webContents.openDevTools()
 
-
   win.on('closed', () => {
     win = null
-  })
+  });
+
+  win.on('hide', () => {
+  });
+
+  win.on('show', () => {
+  });
 }
 
 
