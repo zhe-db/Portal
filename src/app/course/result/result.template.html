@@ -4,9 +4,18 @@
   </div>
   <div class ="row">
     <nav class="nav nav-pills nav-fill" id="course-navbar">
-      <span class="badge badge-primary">{{TextConstant.DESCRIPTION_BADGE}}</span>
-      <span class="badge badge-success">{{TextConstant.REQUIRE_BADGE}}</span>
-      <span class="badge badge-danger">{{TextConstant.ANTI_REQUIRE_BADGE}}</span>
+      <button type="button" class="btn btn-primary nav-badge">
+         {{TextConstant.DESCRIPTION_BADGE}} <span class="badge badge-light">{{MainCourse.description? "^o^": "X_X"}}</span>
+        <span class="sr-only">unread messages</span>
+      </button>
+      <button type="button" class="btn btn-primary nav-badge">
+         {{TextConstant.REQUIRE_BADGE}} <span class="badge badge-light">{{MainCourse.prerequisites? "^o^": "X_X"}}</span>
+        <span class="sr-only">unread messages</span>
+      </button>
+      <button type="button" class="btn btn-primary nav-badge">
+         {{TextConstant.ANTI_REQUIRE_BADGE}} <span class="badge badge-light">{{MainCourse.antirequisites? "^o^": "X_X"}}</span>
+        <span class="sr-only">unread messages</span>
+      </button>
     </nav>
   </div>
   <div class ="row" id="content" data-spy="scroll" data-target="#course-navbar" data-offset="0">
