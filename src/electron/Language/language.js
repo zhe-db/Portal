@@ -10,13 +10,13 @@ const filename = 'lang';
 
 const getStorage = (app, logger) => {
     const filePath = path.join(app.getPath('userData'), `${filename}.json`);
-    logger.info(MODULE_NAME, `Language file location: ${filepath}`);
+    logger.info(MODULE_NAME, `Language file location: ${filePath}`);
 
     return new Storage(filePath, false);
 };
 
 const saveLanguage = (lang, logger) => {
-    const storage = getStorage(app);
+    const storage = getStorage(app, logger);
     logger.info(MODULE_NAME, `SaveLanguage-ipcMain-SavedLanguage`);
     logger.info(MODULE_NAME, `SavedLanguage: ${lang}`);
     storage.write(filename, lang);

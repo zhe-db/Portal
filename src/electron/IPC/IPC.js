@@ -44,8 +44,8 @@ class IPC {
           wait: true, // Wait with callback, until user action is taken against notification
           reply: false // Boolean. If notification should take input. Value passed as third argument in callback and event emitter.
         }, function(error, response) {
-            if(error) this.logger.debug(MODULE_NAME, `Notification Error: ${error}`);
-            if(response) this.logger.info(MODULE_NAME, `Notification Response: ${response}`);
+            // if(error) this.logger.debug(MODULE_NAME, `Notification Error: ${error}`);
+            // if(response) this.logger.info(MODULE_NAME, `Notification Response: ${response}`);
         });
       });
 
@@ -67,7 +67,7 @@ class IPC {
       ipcMain.on('SetLanguage', (event, lang) => {
         this.logger.info(MODULE_NAME, `SetLanauge-ipcMain-received`);
         this.logger.info(MODULE_NAME, `Language: ${lang}`);
-        language.saveLanguage(lang);
+        language.saveLanguage(lang, this.logger);
       });
 
       ipcMain.on('LoadLanguage', (event) =>{
