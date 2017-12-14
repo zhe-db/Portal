@@ -1,4 +1,4 @@
-import MainInitializers from './src/electron/MainInitializers';
+import MainInitializers from './electron/MainInitializers';
 
 MainInitializers.init();
 //
