@@ -4,7 +4,9 @@ const {BrowserWindow} = require('electron')
 const notifier = require('node-notifier');
 const path = require('path');
 const url = require('url');
+import Utils from '../Utils';
 
+const MODULE_NAME = Utils.moduleName(__filename);
 const WindowsToaster = require('node-notifier').WindowsToaster;
 
 class IPC {
@@ -28,12 +30,12 @@ class IPC {
         notifier.notify({
         'title': 'My notification',
         'message': 'Hello, there!'
-      });
-        console.log('ipc process received!')
+        });
+        this.logger.info(MODULE_NAME, `CourseResultNotification-ipcMain-received`);
         let NotificationMessageTitle = `${ResultCourse.subject} ${ResultCourse.catalog_number}: ${ResultCourse.title}`;
         let NotificationMessageBody = ResultCourse.description;
-        console.log(NotificationMessageTitle);
-        console.log(NotificationMessageBody);
+        this.logger.info(MODULE_NAME, `Notification title: ${NotificationMessageTitle}`);
+        this.logger.info(MODULE_NAME, `Notification body: ${NotificationMessageBody}`);
         notifier.notify({
           title: NotificationMessageTitle,
           message: NotificationMessageBody,
@@ -42,21 +44,19 @@ class IPC {
           wait: true, // Wait with callback, until user action is taken against notification
           reply: false // Boolean. If notification should take input. Value passed as third argument in callback and event emitter.
         }, function(error, response) {
-            console.log(error)
-            console.log(response)
+            if(error) this.logger.debug(MODULE_NAME, `Notification Error: ${error}`);
+            if(response) this.logger.info(MODULE_NAME, `Notification Response: ${response}`);
         });
-
       });
 
       ipcMain.on('OpenRateMyProfessor', (event, profName) => {
-        console.log('rateMyProf received!');
-        console.log(profName);
+        this.logger.info(MODULE_NAME, `OpenRateMyProfessor-ipcMain-received`);
+        this.logger.info(MODULE_NAME, `Professor Name: ${profName}`)
         const firstName = profName.split(',')[0];
         const lastName = profName.split(',')[1];
         var rateMyProf = new BrowserWindow({width: 800, height: 600, resizable: true, frame: true});
         rateMyProf.setMenu(null);
         rateMyProf.loadURL(`http://www.ratemyprofessors.com/search.jsp?query=${lastName}+${firstName}`)
-
         rateMyProf.on('closed', () => {
           rateMyProf = null;
         });
@@ -65,13 +65,15 @@ class IPC {
 
     languageInit() {
       ipcMain.on('SetLanguage', (event, lang) => {
-        console.log(`SetLanguage Received: ${lang}`);
+        this.logger.info(MODULE_NAME, `SetLanauge-ipcMain-received`);
+        this.logger.info(MODULE_NAME, `Language: ${lang}`);
         language.saveLanguage(lang);
       });
 
       ipcMain.on('LoadLanguage', (event) =>{
-        console.log('loadLanguage Received');
-        const lang = language.loadLanguage();
+        this.logger.info(MODULE_NAME, `LoadLanauge-ipcMain-received`);
+        const lang = language.loadLanguage(this.logger);
+        this.logger.info(MODULE_NAME, `Language: ${lang}`);
         event.sender.send('LoadLanguage-reply', lang);
       });
     }

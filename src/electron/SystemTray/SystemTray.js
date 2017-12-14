@@ -11,7 +11,7 @@ class SystemTray {
 
   init () {
     this.menuInit();
-    const iconPath = './dist/assets/img/uwTray.ico';
+    const iconPath = './build/icon.ico';
     this.tray = new Tray(iconPath);
     this.tray.setToolTip(`Σ(っ°Д°;)っ WATHUB`);
     this.tray.on('click', () => {
