@@ -1,6 +1,8 @@
 {
-  "name": "portal",
-  "version": "0.0.0",
+  "name": "Portal",
+  "version": "1.0.0",
+  "description": "Mr.Goose",
+  "author": "Z687WANG",
   "license": "MIT",
   "main": "main.js",
   "angular-cli": {},
@@ -10,9 +12,18 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor",
-    "electron": "electron --inspect=1955 .",
+    "electron": "electron .",
     "electron-build": "ng build --base-href ./ && electron .",
-    "server": "node ./src/electron/BackEnd/server.js"
+    "server": "node ./src/electron/BackEnd/server.js",
+    "build": "ng build --base-href ./ && build --dir"
+  },
+  "build": {
+    "appId": "uwaterloo.ca.z687wang",
+    "productName": "WATHUB",
+    "win": {
+     "target": "nsis",
+     "icon": "build/icon.ico"
+    }
   },
   "private": true,
   "dependencies": {
@@ -31,9 +42,6 @@
     "core-js": "^2.4.1",
     "cors": "^2.8.4",
     "crypto-js": "^3.1.9-1",
-    "electron": "^1.7.8",
-    "electron-reload": "^1.2.2",
-    "electron-titlebar": "0.0.3",
     "express": "^4.16.2",
     "express-bearer-token": "^2.1.0",
     "jquery": "^3.2.1",
@@ -58,8 +66,13 @@
     "@types/jquerymobile": "^1.4.30",
     "@types/node": "~6.0.60",
     "bootstrap": "^4.0.0-alpha.6",
+    "electron": "^1.7.8",
+    "electron-builder": "^19.49.0",
+    "electron-log": "^2.2.12",
+    "electron-reload": "^1.2.2",
+    "electron-titlebar": "0.0.3",
     "codelyzer": "~3.2.0",
-    "electron-prebuilt-compile": "^1.7.9",
+    "electron-prebuilt-compile": "^1.8.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",
