@@ -1,5 +1,5 @@
 {
-  "name": "Portal",
+  "name": "WATHUB",
   "version": "1.0.0",
   "description": "Mr.Goose",
   "author": "Z687WANG",
@@ -15,17 +15,9 @@
     "electron": "electron .",
     "electron-build": "ng build --base-href ./ && electron .",
     "server": "node ./src/electron/BackEnd/server.js",
-    "build": "ng build --base-href ./ && build --dir",
+    "build": "ng build --base-href ./ && electron-forge make",
     "package": "electron-forge package",
     "make": "electron-forge make"
-  },
-  "build": {
-    "appId": "uwaterloo.ca.z687wang",
-    "productName": "WATHUB",
-    "win": {
-      "target": "nsis",
-      "icon": "build/icon.ico"
-    }
   },
   "private": true,
   "dependencies": {
@@ -116,7 +108,7 @@
       },
       "electronWinstallerConfig": {
         "name": "WATHUB",
-        "icon": "build/icon.ico"
+        "icon": "dist/assets/img/icon.ico"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
