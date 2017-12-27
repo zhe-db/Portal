@@ -1,5 +1,5 @@
 {
-  "name": "Portal",
+  "name": "WATHUB",
   "version": "1.0.0",
   "description": "Mr.Goose",
   "author": "Z687WANG",
@@ -15,17 +15,9 @@
     "electron": "electron .",
     "electron-build": "ng build --base-href ./ && electron .",
     "server": "node ./src/electron/BackEnd/server.js",
-    "build": "ng build --base-href ./ && build --dir",
+    "build": "ng build --base-href ./ && electron-forge make",
     "package": "electron-forge package",
     "make": "electron-forge make"
-  },
-  "build": {
-    "appId": "uwaterloo.ca.z687wang",
-    "productName": "WATHUB",
-    "win": {
-      "target": "nsis",
-      "icon": "build/icon.ico"
-    }
   },
   "private": true,
   "dependencies": {
@@ -38,6 +30,7 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "angular-calendar": "^0.22.2",
     "body-parser": "^1.18.2",
     "cheerio": "^1.0.0-rc.2",
     "cookie-parser": "^1.4.3",
@@ -45,13 +38,13 @@
     "cors": "^2.8.4",
     "crypto-js": "^3.1.9-1",
     "electron-compile": "^6.4.2",
-    "electron-squirrel-startup": "^1.0.0",
-    "express": "^4.16.2",
-    "express-bearer-token": "^2.1.0",
     "electron-log": "^2.2.12",
     "electron-prebuilt-compile": "1.7.9",
     "electron-reload": "^1.2.2",
+    "electron-squirrel-startup": "^1.0.0",
     "electron-titlebar": "0.0.3",
+    "express": "^4.16.2",
+    "express-bearer-token": "^2.1.0",
     "jquery": "^3.2.1",
     "jquery-mobile": "^1.5.0-alpha.1",
     "jsonfile": "^4.0.0",
@@ -116,7 +109,7 @@
       },
       "electronWinstallerConfig": {
         "name": "WATHUB",
-        "icon": "build/icon.ico"
+        "icon": "dist/assets/img/icon.ico"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},

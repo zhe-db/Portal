@@ -1,0 +1,9 @@
+<div class = "container">
+  <h2>{{schedule.building + " " + schedule.room}}</h2>
+  <div class="row">
+    <mwl-calendar-week-view
+      [viewDate]="viewDate"
+      [events]="Events">
+    </mwl-calendar-week-view>
+  </div>
+</div>

@@ -1,3 +1,45 @@
-<p>
-  classroom works!
-</p>
+<div class="row">
+  <button id="main-back-btn" class="btn btn-primary" type="submit" (click)="goBack()" fragment="#page-two" id="back">Back</button>
+</div>
+
+<!-- <div class="row">
+  <h1 id="enrollment-title">{{TextConstant.TITLE}}</h1>
+</div>
+
+<div class="group row">
+  <input class ="course-code" type="text" required [(ngModel)]="input">
+  <span class="highlight"></span>
+  <span class="bar"></span>
+  <label>{{TextConstant.INPUT_TEXT}}</label>
+  <button  class="btn btn-success course-submit" id = "course-submit" type="button" (click)="Submit()">{{TextConstant.SUBMIT_BUTTON}}</button>
+</div> -->
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false" *ngIf="TextConstant">
+  <ol *ngIf="classroomSchedule" class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active" id="page-one">
+        <div class = "container">
+        <div class="row">
+          <h1 id="enrollment-title">{{TextConstant.TITLE}}</h1>
+        </div>
+        <div class="group row">
+          <input class ="course-code" type="text" required [(ngModel)]="searchInput">
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>{{TextConstant.INPUT_TEXT}}</label>
+          <button class="btn btn-success course-submit" id = "course-submit" type="button" (click)="submit()">{{TextConstant.SUBMIT_BUTTON}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item" id ="page-two" *ngIf="classroomSchedule">
+      <router-outlet name="classroomResultRouter" id="classroomResultRouter"></router-outlet>
+    </div>
+  </div>
+  <a *ngIf="classroomSchedule" class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" (SearchCourse) = "SearchCourse($event)">
+    <span class="carousel-control-next-icon bounce" aria-hidden="true" (click)="RemoveClass($event)"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

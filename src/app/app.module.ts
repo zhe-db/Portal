@@ -4,9 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { CalendarModule } from 'angular-calendar';
+
 import { CourseModule } from './course/course.module';
 import { EnrollmentModule } from './enrollment/enrollment.module';
+import { ClassroomModule } from './classroom/classroom.module';
 import { EnrollmentRoutingModule } from './enrollment/enrollment-routing.module';
+import { ClassroomRoutingModule } from './classroom/classroom-routing.module';
+
 import { UWAPIServices } from './uwaterloo-api.services';
 import { LanguageService} from './language.services';
 import { AppComponent } from './app.component';
@@ -14,7 +19,6 @@ import { MainMenuComponent } from './MainMenu/MainMenu.component';
 import { HeaderComponent } from './Header/Header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EnrollmentComponent } from './enrollment/enrollment.component';
-import { ClassroomComponent } from './classroom/classroom.component';
 import { TermComponent } from './term/term.component';
 import { FinalsComponent } from './finals/finals.component';
 import { UserComponent } from './user/user.component';
@@ -30,7 +34,6 @@ import {SearchFilterPipe} from './searchFilter';
     AppComponent,
     MainMenuComponent,
     HeaderComponent,
-    ClassroomComponent,
     TermComponent,
     FinalsComponent,
     UserComponent,
@@ -42,12 +45,15 @@ import {SearchFilterPipe} from './searchFilter';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CalendarModule.forRoot(),
     FormsModule,
     HttpModule,
     AppRoutingModule,
     EnrollmentRoutingModule,
+    ClassroomRoutingModule,
     CourseModule,
     EnrollmentModule,
+    ClassroomModule,
     BrowserAnimationsModule
   ],
   providers: [UWAPIServices, LanguageService],
