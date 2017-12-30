@@ -44,7 +44,7 @@ export class ClassroomDetailComponent implements OnInit {
       // this.events.forEach((event) => {
       //   if(event.weekday == new Date().getDay()+1) this.todayEvents.push(event);
       // });
-      console.log(this.todayEvents);
+      console.log(this.events);
     });
   }
 
