@@ -17,3 +17,34 @@ Run `npm run electron ` in a terminal with Angular project built.
 ## Build Whole App
 
 Run `npm run make` to build the whole app, generating a release folder and an installer.
+
+
+## TODO Electron Side:
+- [x] Build Pipline
+- [x] initializer pipline
+- [x] Dev Console Logger
+- [x] Write to Storage
+- [x] Prod Logger
+- [x] LanguageSwitch
+- [x] Run in Background
+- [x] System Tray
+- [x] System Notification
+- [x] Inter Process Communication
+- [x] Window lock
+- [x] Installer
+- [] Backend (express)
+- [] Customize Installer(NSIS)
+- [] Neo4j Database
+- [] Knowlege Gragh for courses
+
+## TODO Front end:
+- [x] HomeMenu
+- [x] Course
+- [x] Enrollment
+- [x] Classroom
+- [] Professor
+- [] Building
+- [] WatIam
+- [] Term
+- [] Finals
+- [] User Profile
