@@ -32,19 +32,19 @@ Run `npm run make` to build the whole app, generating a release folder and an in
 - [x] Inter Process Communication
 - [x] Window lock
 - [x] Installer
-- [] Backend (express)
-- [] Customize Installer(NSIS)
-- [] Neo4j Database
-- [] Knowlege Gragh for courses
+- [ ] Simple Backend for course knowlege graph (express or django)
+- [ ] Customize Installer(NSIS)
+- [ ] Neo4j Database
+- [ ] Knowlege Gragh for courses
 
 ## TODO Front end:
 - [x] HomeMenu
 - [x] Course
 - [x] Enrollment
 - [x] Classroom
-- [] Professor
-- [] Building
-- [] WatIam
-- [] Term
-- [] Finals
-- [] User Profile
+- [ ] Professor
+- [ ] Building
+- [ ] WatIam
+- [ ] Term
+- [ ] Finals
+- [ ] User Profile
