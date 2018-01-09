@@ -1,3 +1,33 @@
 .cal-header {
   color: white;
 }
+#result-container {
+  max-height: 250px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-width: 580px;
+  margin: 0 auto;
+  border-radius: 2%;
+}
+
+.cal-day-view {
+  max-height: 300px;
+  overflow-x: hidden !important;
+}
+
+.cal-hour-rows {
+  overflow-x: hidden !important;
+}
+
+
+div::-webkit-scrollbar {
+  width: .4em;
+}
+div::-webkit-scrollbar,
+div::-webkit-scrollbar-thumb {
+  overflow:visible;
+  border-radius: 4px;
+}
+div::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.2);
+}

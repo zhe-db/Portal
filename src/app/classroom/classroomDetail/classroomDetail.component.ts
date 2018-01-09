@@ -8,6 +8,8 @@ import { LanguageConstant } from '../language.constant';
 import { ClassroomService }  from '../classroom.services';
 import { Classroom } from '../classroom';
 import { ClassSchedule } from '../classSchedule';
+import { DateEnum } from './dateEnum';
+
 declare var electron: any;
 @Component({
   selector: 'classroom-detail',
@@ -17,11 +19,11 @@ declare var electron: any;
 export class ClassroomDetailComponent implements OnInit {
   schedule: ClassSchedule;
   TextConstant;
-  view: string = 'week';
+  view = DateEnum.Day;
+  dateEnum = DateEnum;
   viewDate: Date = new Date();
-
-  events: CalendarEvent<any>[] = [];
-  todayEvents = [];
+  events = [];
+  todayEvents: CalendarEvent[] = [];
 
   constructor(
     private classroomService: ClassroomService,
@@ -41,10 +43,21 @@ export class ClassroomDetailComponent implements OnInit {
   SearchClassroom () {
     this.classroomService.searchClassroom(this.schedule).then((res) => {
       this.events = res.data;
-      // this.events.forEach((event) => {
-      //   if(event.weekday == new Date().getDay()+1) this.todayEvents.push(event);
-      // });
+      this.events.forEach((event) => {
+        if(event.weekday == new Date().getDay()) {
+          this.todayEvents.push({
+            start: new Date(),
+            title: event.title,
+            color: {
+              primary: '#ad2121',
+              secondary: '#FAE3E3'
+            }
+          });
+        }
+      });
+      console.log(this.todayEvents);
       console.log(this.events);
+      console.log(this.viewDate);
     });
   }
 

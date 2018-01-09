@@ -20,7 +20,7 @@ import { CalendarModule } from 'angular-calendar';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    CalendarModule
+    CalendarModule.forRoot()
   ],
   providers: [ClassroomService]
 })
