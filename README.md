@@ -1,15 +1,15 @@
 # Portal
 Desktop UW Student Portal
 
-![Portal](http://www.waltwang.com/sampleImage/sample-1.PNG)
+![Portal](http://www.waltwang.com/sampleImage/sample-1.PNG =300X )
 
-![Portal](http://www.waltwang.com/sampleImage/sample-2.PNG)
+![Portal](http://www.waltwang.com/sampleImage/sample-2.PNG =300X )
 
-![Portal](http://www.waltwang.com/sampleImage/sample-3.PNG)
+![Portal](http://www.waltwang.com/sampleImage/sample-3.PNG =300X )
 
-![Portal](http://www.waltwang.com/sampleImage/sample-4.PNG)
+![Portal](http://www.waltwang.com/sampleImage/sample-4.PNG =300X )
 
-![Portal](http://www.waltwang.com/sampleImage/sample-5.PNG)
+![Portal](http://www.waltwang.com/sampleImage/sample-5.PNG =300X )
 
 ## 1.Build FrontEnd Side
 
