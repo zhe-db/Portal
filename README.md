@@ -1,6 +1,15 @@
 # Portal
+Desktop UW Student Portal
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) and electron.
+![Portal](http://www.waltwang.com/sampleImage/sample-1.PNG)
+
+![Portal](http://www.waltwang.com/sampleImage/sample-2.PNG)
+
+![Portal](http://www.waltwang.com/sampleImage/sample-3.PNG)
+
+![Portal](http://www.waltwang.com/sampleImage/sample-4.PNG)
+
+![Portal](http://www.waltwang.com/sampleImage/sample-5.PNG)
 
 ## 1.Build FrontEnd Side
 
