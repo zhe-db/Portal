@@ -1,8 +1,6 @@
 # Portal
 Desktop UW Student Portal
 
-![Portal](http://www.waltwang.com/sampleImage/sample-1.PNG)
-
 ## 1.Build FrontEnd Side
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
@@ -46,3 +44,10 @@ Run `npm run make` to build the whole app, generating a release folder and an in
 - [ ] Term
 - [ ] Finals
 - [ ] User Profile
+
+## Screenshots
+![Portal](http://www.waltwang.com/sampleImage/sample-1.PNG)
+![Portal](http://www.waltwang.com/sampleImage/sample-2.PNG)
+![Portal](http://www.waltwang.com/sampleImage/sample-3.PNG)
+![Portal](http://www.waltwang.com/sampleImage/sample-4.PNG)
+![Portal](http://www.waltwang.com/sampleImage/sample-5.PNG)
